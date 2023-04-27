@@ -1,11 +1,23 @@
 {
   "files": {
-    "main.css": "/artist-portfolio/static/css/main.5b77d35c.css",
-    "main.js": "/artist-portfolio/static/js/main.ffa0d4fe.js",
+    "main.css": "/artist-portfolio/static/css/main.e4b1c9c4.css",
+    "main.js": "/artist-portfolio/static/js/main.b34b2865.js",
+    "static/media/8.jpg": "/artist-portfolio/static/media/8.2a31326c111b7e569e03.jpg",
+    "static/media/4.jpg": "/artist-portfolio/static/media/4.f31c00caeabd36f7f2fe.jpg",
+    "static/media/5.jpg": "/artist-portfolio/static/media/5.2c0965445be6d41fa4ef.jpg",
+    "static/media/6.jpg": "/artist-portfolio/static/media/6.73e8dcd9724ea2ee66c7.jpg",
+    "static/media/7.jpg": "/artist-portfolio/static/media/7.e18291eb1b26b1a5ec16.jpg",
+    "static/media/1.jpg": "/artist-portfolio/static/media/1.10811f49ad1f78bc1897.jpg",
+    "static/media/3.jpg": "/artist-portfolio/static/media/3.2d43818bef6f4991d668.jpg",
+    "static/media/9.jpg": "/artist-portfolio/static/media/9.2c97033116e3b48b1b3e.jpg",
+    "static/media/11.jpg": "/artist-portfolio/static/media/11.c4fba37526b749a1ff45.jpg",
+    "static/media/12.jpg": "/artist-portfolio/static/media/12.b54f8987308dc4575e43.jpg",
+    "static/media/2.jpg": "/artist-portfolio/static/media/2.f54ecaec155c865ec794.jpg",
+    "static/media/10.jpg": "/artist-portfolio/static/media/10.b0b73e2d3670b2858a84.jpg",
     "index.html": "/artist-portfolio/index.html"
   },
   "entrypoints": [
-    "static/css/main.5b77d35c.css",
-    "static/js/main.ffa0d4fe.js"
+    "static/css/main.e4b1c9c4.css",
+    "static/js/main.b34b2865.js"
   ]
 }
