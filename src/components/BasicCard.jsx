@@ -1,4 +1,5 @@
 import * as React from "react";
+import PropTypes from "prop-types";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import MuiAlert from "@mui/material/Alert";
@@ -6,12 +7,13 @@ import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Chip from "@mui/material/Chip";
-import Grid from "@mui/material/Grid";
+import Grid from '@mui/material/Grid2';
 import { styled } from "@mui/material/styles";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 import MuiAccordion from "@mui/material/Accordion";
 import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
+import { Box, Button } from "@mui/material";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -49,11 +51,20 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: "1px solid rgba(0, 0, 0, .125)",
 }));
 
-const Alert = React.forwardRef(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
+const Alert = React.memo(
+  React.forwardRef((props, ref) => (
+    <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
+  ))
+);
 
-export default function BasicCard(props) {
+const BasicCard = React.memo((props) => {
+
+  const [expanded, setExpanded] = React.useState(true);
+
+  const handleAccordionChange = () => {
+    setExpanded((prevExpanded) => !prevExpanded);
+  };
+
   return (
     <>
       <Card
@@ -71,61 +82,87 @@ export default function BasicCard(props) {
               severity="warning"
               sx={{ width: "100%", backgroundColor: "#709fc4" }}
             >
-              {props.titulo}
+              {props.title}
             </Alert>
 
             <TextField
               disabled
               id="outlined-disabled"
               multiline
-              defaultValue={props.descripcion}
+              defaultValue={props.description}
             />
 
-            <Accordion expanded>
+            <Accordion expanded={expanded} onChange={handleAccordionChange}>
               <AccordionSummary
                 aria-controls="panel1d-content"
                 id="panel1d-header"
               >
                 <Typography variant="h5" gutterBottom>
-                  {props.textoContacto}
+                  {props.contactText}
                 </Typography>
               </AccordionSummary>
               <AccordionDetails>
-                {props.botonesContacto.map((boton, index) => (
-                  <Chip
-                    sx={{ width: boton.width || "25%" }}
-                    variant="outlined"
-                    label={boton.label}
-                    component="a"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href={boton.link}
-                    clickable
-                    key={index}
-                  />
-                ))}
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
+                  {props.contactButtons.map((button, index) => (
+                    <Button
+                      color="secondary"
+                      sx={{ width: button.width || "25%" }}
+                      variant="outlined"
+                      component="a"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href={button.link}
+                      clickable
+                      key={index}
+                    >
+                      {button.label}
+                    </Button>
+                  ))}
+                </Box>
               </AccordionDetails>
             </Accordion>
 
             <Typography variant="h5" gutterBottom>
-              {props.textoHabilidades}
+              {props.skillsText}
             </Typography>
 
-            <Grid container spacing={2}>
-              <Grid item xs={8}>
-                {props.habilidades.map((habilidad, index) => (
-                  <Chip
-                    sx={{ width: habilidad.width || "25%" }}
-                    variant="outlined"
-                    label={habilidad.label}
-                    key={index}
-                  />
-                ))}
-              </Grid>
+            <Grid xs={8} container spacing={2}>
+              {props.skills.map((skill, index) => (
+                <Chip
+                  sx={{ width: skill.width || "25%" }}
+                  variant="outlined"
+                  color="primary"
+                  label={skill.label}
+                  key={index}
+                />
+              ))}
             </Grid>
+
           </Stack>
         </CardContent>
       </Card>
     </>
   );
-}
+});
+
+BasicCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  contactText: PropTypes.string.isRequired,
+  contactButtons: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      link: PropTypes.string.isRequired,
+      width: PropTypes.string,
+    })
+  ).isRequired,
+  skillsText: PropTypes.string.isRequired,
+  skills: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      width: PropTypes.string,
+    })
+  ).isRequired,
+};
+
+export default BasicCard;

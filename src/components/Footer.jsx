@@ -2,8 +2,9 @@ import * as React from "react";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
+import PropTypes from "prop-types";
 
-export default function Footer(props) {
+const Footer = React.memo((props) => {
   return (
     <>
       <Box
@@ -18,10 +19,16 @@ export default function Footer(props) {
             color="text.secondary"
             component="h1"
           >
-            {props.textoFooter}
+            {props.text}
           </Typography>
         </Container>
       </Box>
     </>
   );
-}
+});
+
+Footer.propTypes = {
+  text: PropTypes.string.isRequired,
+};
+
+export default Footer;

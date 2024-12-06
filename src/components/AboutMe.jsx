@@ -4,13 +4,14 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Typewriter from "typewriter-effect";
+import PropTypes from "prop-types";
 
-export default function AboutMe(props) {
+const AboutMe = React.memo((props) => {
   return (
     <>
       <Box className="aboutme">
-        <div className="animacion">
           <Container>
+            
             <Box sx={{ marginTop: 8 }} display="flex" justifyContent="center">
               <Avatar
                 alt={props.altAvatar}
@@ -20,41 +21,36 @@ export default function AboutMe(props) {
               </Avatar>
             </Box>
 
-            <br />
+            <Box sx={{ mt: 4, textAlign: "center" }}>
+              <Typography align="center" variant="h4" display="block" gutterBottom>
+                <Typewriter
+                  onInit={(typewriter) => {
+                    typewriter.typeString(props.name).start();
+                  }}
+                />
+              </Typography>
 
-            <Typography
-              align="center"
-              variant="h4"
-              display="block"
-              gutterBottom
-            >
-              <Typewriter
-                onInit={(typewriter) => {
-                  typewriter.typeString(props.nombre).start();
-                }}
-              />
-            </Typography>
+              <Typography align="center" variant="subtitle1" display="block" gutterBottom>
+                {props.occupation}
+              </Typography>
 
-            <Typography
-              align="center"
-              variant="subtitle1"
-              display="block"
-              gutterBottom
-            >
-              {props.ocupacion}
-            </Typography>
+              <Typography align="center" variant="subtitle1" display="block" gutterBottom>
+                {props.location}
+              </Typography>
+            </Box>
 
-            <Typography
-              align="center"
-              variant="subtitle1"
-              display="block"
-              gutterBottom
-            >
-              {props.ubicacion}
-            </Typography>
           </Container>
-        </div>
       </Box>
     </>
-  );
-}
+ );
+});
+
+AboutMe.propTypes = {
+  name: PropTypes.string.isRequired,
+  occupation: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  altAvatar: PropTypes.string.isRequired,
+  avatar: PropTypes.node,
+};
+
+export default AboutMe;

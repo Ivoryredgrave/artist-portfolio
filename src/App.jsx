@@ -23,80 +23,28 @@ import img10 from "./images/10.jpg";
 import img11 from "./images/11.jpg";
 import img12 from "./images/12.jpg";
 
-const portfolioImagenes = [
-  {
-    img: img01,
-    title: "Nombre",
-    author: "@artista",
-    rows: 2,
-    cols: 2,
-    featured: true,
-  },
-  {
-    img: img02,
-    title: "Nombre",
-    author: "@artista",
-  },
-  {
-    img: img03,
-    title: "Nombre",
-    author: "@artista",
-  },
-  {
-    img: img04,
-    title: "Nombre",
-    author: "@artista",
-    cols: 2,
-  },
-  {
-    img: img05,
-    title: "Nombre",
-    author: "@artista",
-    cols: 2,
-  },
-  {
-    img: img06,
-    title: "Nombre",
-    author: "@artista",
-    rows: 2,
-    cols: 2,
-    featured: true,
-  },
-  {
-    img: img07,
-    title: "Nombre",
-    author: "@artista",
-  },
-  {
-    img: img08,
-    title: "Nombre",
-    author: "@artista",
-  },
-  {
-    img: img09,
-    title: "Nombre",
-    author: "@artista",
-    rows: 2,
-    cols: 2,
-  },
-  {
-    img: img10,
-    title: "Nombre",
-    author: "@artista",
-  },
-  {
-    img: img11,
-    title: "Nombre",
-    author: "@artista",
-  },
-  {
-    img: img12,
-    title: "Nombre",
-    author: "@artista",
-    cols: 2,
-  },
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
+const defaultData = { title: "Name", author: "@artist" };
+const portfolioImages = [
+  { ...defaultData, img: img01 },
+  { ...defaultData, img: img02 },
+  { ...defaultData, img: img03 },
+  { ...defaultData, img: img04 },
+  { ...defaultData, img: img05 },
+  { ...defaultData, img: img06 },
+  { ...defaultData, img: img07 },
+  { ...defaultData, img: img08 },
+  { ...defaultData, img: img09 },
+  { ...defaultData, img: img10 },
+  { ...defaultData, img: img11 },
+  { ...defaultData, img: img12 },
 ];
-const habilidades = [
+
+const skills = [
   { label: "Illustration" },
   { label: "Digital Painting" },
   { label: "3D" },
@@ -104,8 +52,12 @@ const habilidades = [
   { label: "2D" },
   { label: "Digital Sculpting" },
 ];
-const botonesContacto = [
-  { label: "Gmail", link: "mailto:ivoryredgrave@gmail.com" },
+
+const contactButtons = [
+  {
+    label: "Gmail",
+    link: "mailto:ivoryredgrave@gmail.com"
+  },
   {
     label: "WhatsApp",
     link: "https://api.whatsapp.com/send?text=¡Hola!&phone=+18493861171",
@@ -117,34 +69,34 @@ const botonesContacto = [
 ];
 
 function App() {
-  
+
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
 
       <AboutMe
         avatar={<Person4Icon />}
-        altAvatar="Avatar de @artista"
-        nombre="@artista"
-        ubicacion="Ubicación"
-        ocupacion="Ocupación"
+        altAvatar="Avatar of @artist"
+        name="@artist"
+        location="Location"
+        occupation="Occupation"
       />
 
       <FullWidthTabs
-        portfolioImagenes={portfolioImagenes}
-        sobreMi={
+        portfolioImages={portfolioImages}
+        aboutme={
           <BasicCard
-            titulo="@artista - sobre mi"
-            descripcion="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            textoContacto="Contacto"
-            textoHabilidades="Habilidades"
-            habilidades={habilidades}
-            botonesContacto={botonesContacto}
+            title="@artist - about me"
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            contactText="Contact"
+            skillsText="Skills"
+            skills={skills}
+            contactButtons={contactButtons}
           />
         }
       />
 
-      <Footer textoFooter="Desarrollado por Ivory 💕" />
+      <Footer text="Developed by Ivory 💕" />
     </ThemeProvider>
   );
 }
