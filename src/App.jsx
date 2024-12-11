@@ -60,7 +60,7 @@ const contactButtons = [
   },
   {
     label: "WhatsApp",
-    link: "https://api.whatsapp.com/send?text=¡Hola!&phone=+18493861171",
+    link: "https://api.whatsapp.com/send?text=¡Hola!&phone=+18296911654",
   },
   {
     label: "LinkedIn",
